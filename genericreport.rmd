@@ -10,17 +10,38 @@ author: "Characterization Laboratory, Natural Resources Canada"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(readxl)
+library(knitr)
 ```
  
 ## Sample Information
 Sample ID: `r sample_id`
 
+Sample Name: `r sample_name`
+
+Analysis Date: `r analysis_date`
+
+Acquisition Method: `r acquisition_method`
+
+Data File: `r data_file_name`
+
+Data Analysis Method: `r data_analysis_method`
+
 Results File: `r results_file`
 
+Operator Name: `r operator_name`
+
+
 ## Breakdown by Carbon Count
+```{r echo=FALSE, results='asis'}
+kable(by_c, caption="Aggregate Peak Sum by Carbon Atom Count")
+```
 
 ## Breakdown by C & H Count
+```{r echo=FALSE, results='asis'}
+kable(by_ch, caption="Aggregate Peak Sum by Carbon and Hydrogen Count")
+```
 
 ## Breakdown by All Atom Count
+```{r echo=FALSE, results='asis'}
+kable(by_all, caption=paste("Aggregate Peak Sum by Atomic Count for", paste(element_list, collapse = ", ")))
 
