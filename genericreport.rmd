@@ -1,21 +1,22 @@
 ---
-title: "ResultsCompiler"
-author: "Phil Bulsink"
-date: "October 5, 2017"
 output: html_document
+params: 
+    set_title: "My Title!"
+    set_date: "2017-10-05"
+title: "`r params$set_title`"
+date: "`r params$set_date`"
+author: "Characterization Laboratory, Natural Resources Canada"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(readxl)
-quick_results_file = "./data/example_results.xlsx"
-sample_id = "17446-01"
 ```
-
+ 
 ## Sample Information
 Sample ID: `r sample_id`
 
-Report Date: `r Sys.Date()`
+Results File: `r results_file`
 
 ## Breakdown by Carbon Count
 
