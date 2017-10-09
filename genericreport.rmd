@@ -11,6 +11,7 @@ author: "Characterization Laboratory, Natural Resources Canada"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
+library(pander)
 ```
  
 ## Sample Information
@@ -33,15 +34,16 @@ Operator Name: `r operator_name`
 
 ## Breakdown by Carbon Count
 ```{r echo=FALSE, results='asis'}
-kable(by_c, caption="Aggregate Peak Sum by Carbon Atom Count")
+pandoc.table(by_c, caption="Aggregate Peak Sum by Carbon Atom Count")
 ```
 
 ## Breakdown by C & H Count
 ```{r echo=FALSE, results='asis'}
-kable(by_ch, caption="Aggregate Peak Sum by Carbon and Hydrogen Count")
+pandoc.table(by_ch, caption="Aggregate Peak Sum by Carbon and Hydrogen Count")
 ```
 
 ## Breakdown by All Atom Count
 ```{r echo=FALSE, results='asis'}
-kable(by_all, caption=paste("Aggregate Peak Sum by Atomic Count for", paste(element_list, collapse = ", ")))
+pandoc.table(by_all, caption=paste("Aggregate Peak Sum by Atomic Count for", paste(element_list, collapse = ", ")))
+```
 
