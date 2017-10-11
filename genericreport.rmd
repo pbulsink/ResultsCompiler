@@ -2,7 +2,7 @@
 output: html_document
 params: 
     set_title: "My Title!"
-    set_date: "2017-10-05"
+    set_date: "2017-10-11"
 title: "`r params$set_title`"
 date: "`r params$set_date`"
 author: "Characterization Laboratory, Natural Resources Canada"

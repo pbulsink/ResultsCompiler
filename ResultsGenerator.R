@@ -1,12 +1,12 @@
 library(readxl)
 library(stringr)
 
-directory <- "./data/"
-filelist <- list.files(directory)
+directory <- "C:/Users/pbulsink/Desktop/MH Symonds/MH_Report/"
+filelist <- list.files(directory, pattern = "*.xls*")
 report_dir<- "reports"
 
 
-element_list<-c("C","H","N","O","S","F","Cl","Br","I","Si")
+element_list<-c("C","H","N","O","S","F","Cl","Br","I", "P", "B", "Si")
 
 element_count<-function(formula, element){
   if(is.na(formula)){
@@ -27,7 +27,7 @@ summarize_table<-function(ecount, ct=compound_table){
   cut_table<-ct[ct$C == ecount[1] & ct$H == ecount[2] & ct$N==ecount[3] &
                   ct$O == ecount[4] & ct$S == ecount[5] & ct$F == ecount[6] &
                   ct$Cl == ecount[7] & ct$Br == ecount[8] & ct$I == ecount[9] &
-                  ct$Si == ecount[10],]
+                  ct$P == ecount[10] & ct$B == ecount[11] & ct$Si == ecount[12],]
   return(sum(as.numeric(cut_table$Area)))
 }
 
