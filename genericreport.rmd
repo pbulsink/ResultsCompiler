@@ -1,7 +1,7 @@
 ---
 output: html_document
 params: 
-    set_title: "My Title!"
+    set_title: "Sample Breakdown Report"
     set_date: "2017-10-11"
 title: "`r params$set_title`"
 date: "`r params$set_date`"
@@ -44,6 +44,6 @@ pandoc.table(by_ch, caption="Aggregate Peak Sum by Carbon and Hydrogen Count")
 
 ## Breakdown by All Atom Count
 ```{r echo=FALSE, results='asis'}
-pandoc.table(by_all, caption=paste("Aggregate Peak Sum by Atomic Count for", paste(element_list, collapse = ", ")))
+pandoc.table(by_all, caption=paste("Aggregate Peak Sum by Atomic Count for", paste(element_list, collapse = ", "), ", if present."))
 ```
 
