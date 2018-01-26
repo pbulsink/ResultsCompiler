@@ -74,9 +74,15 @@ for (results_file in filelist) {
     
     etable <- compound_table[, colnames(compound_table) %in% element_list]
     
-    total_area <- sum(as.numeric(compound_table$Area))
+    total_area <- sum(as.numeric(compound_table$Area), na.rm = TRUE)
     
     by_all <- unique(etable)
+    
+    #Remove empty rows that sneak trhough sometimes
+    zeroRows <- unname((rowSums(by_all, na.rm=TRUE) == 0))
+    if(sum(zeroRows) > 0){
+      by_all <- by_all[!zeroRows,]
+    }
 
     by_all$Area <- apply(by_all, 1, function(x) summarize_table(x, compound_table))
     by_all$`Area.Percent` <- (by_all$Area/total_area) * 100
@@ -101,7 +107,11 @@ for (results_file in filelist) {
     by_all <- by_all[order(by_all$C, by_all$H, by_all$N, by_all$O, by_all$S, by_all$F, by_all$Cl, by_all$Br, by_all$I, by_all$P, by_all$B, by_all$Si), ]
     
     #Remove columns with elements that never show up.
-    by_all <- by_all[,colSums(by_all != 0) > 0]
+    zeroCols <- (colSums(by_all, na.rm=TRUE) == 0)
+    if(sum(zeroCols) > 0){
+      by_all <- by_all[,!zeroCols]
+    }
+    
     
     rownames(by_all) <- NULL
     rownames(by_c) <- NULL
